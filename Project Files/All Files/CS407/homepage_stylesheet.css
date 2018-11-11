@@ -63,9 +63,14 @@ body {
     border: none;
 }
 
-.buttonBar button:active, .buttonBar button:hover {
+.buttonBar button.active {
+    color: #ffffff;
+    background-color: #444444;
+} 
+
+.buttonBar button:hover {
     background-color: #888888;
-    color: #333333;
+    color: #ffffff;
 }
 
 .shiftBar { 
@@ -84,7 +89,7 @@ body {
 }
 
 
-#openShifts {
+#Shifts {
     display: block;
     background-color:inherit;
     text-align: left;
@@ -95,7 +100,7 @@ body {
     font-family: sans-serif
 }
 
-#openShifts:hover{
+#Shifts:hover{
     background-color: #FFD633;
 }
 
