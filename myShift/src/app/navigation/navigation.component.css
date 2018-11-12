@@ -1,0 +1,40 @@
+
+#coworkers {
+    height: 20px;
+    width: 20px;
+    padding-right: 5px;
+    vertical-align: bottom;
+}
+
+.navagation {
+    background-color: #444444;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    background-size: cover;
+}
+
+.navagation a {
+    float: left;
+    color: #DDDDDD;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-variant: small-caps;
+    font-family: sans-serif;
+}
+
+.act  {
+    background-color:#333333;
+    color: #FFFFFF;
+}
+
+.navagation a:hover {
+    background-color:#333333;
+    color: #FFFFFF;
+}
+
+.navagation a.right {
+    float: right;
+}

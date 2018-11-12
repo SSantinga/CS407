@@ -1,0 +1,67 @@
+<div class = "leftbar">
+    <h3>Hello</h3>
+    <div class = "buttonBar">
+        <button type="button" id="btn1" class="btn" onclick="openMyShifts();">My Shifts</button>
+        <button type="button" id="btn2" class="btn" onclick="openAllShifts();">All Shifts</button>
+        <button type="button" id="btn3" class="btn" onclick="openOpenShifts();">Open Shifts</button>
+    </div>
+    <br>
+    <div class = "shiftBar" id="open" style="display: none">
+    <h4>Open Shifts</h4>
+        <p id = "Shifts">7-12 Thursday, October 25 </p>
+        <p id = "Shifts">4-7 Sunday, October 28</p>
+        <p id = "Shifts">4-7 Tuesday, October 30</p>
+        <p id = "Shifts">7-12 Wednesday, October 31</p>
+    </div>
+    
+    <div class = "shiftBar" id="all" style="display: none">
+    <h4>All Shifts</h4>
+        <p id = "Shifts">4-7 Monday, October 19</p>
+        <p id = "Shifts">7-12 Thursday, October 25 </p>
+        <p id = "Shifts">4-7 Sunday, October 28</p>
+        <p id = "Shifts">4-7 Tuesday, October 30</p>
+        <p id = "Shifts">7-12 Wednesday, October 31</p>
+    </div>
+    
+    <div class = "shiftBar" id="my" style="display: none" >
+    <h4>My Shifts</h4>
+        <p id = "Shifts">4-7 Monday, October 19</p>
+    </div>
+</div> 
+
+<script>
+
+    function openMyShifts() {
+        document.getElementById("btn1").className = "active";
+        document.getElementById("btn2").className = "btn";
+        document.getElementById("btn3").className = "btn";
+        
+        document.getElementById("all").style.display = "none";
+        document.getElementById("open").style.display = "none";
+        document.getElementById("my").style.display = "block";
+        
+    }
+    
+    function openAllShifts() {
+        document.getElementById("btn1").className = "btn";
+        document.getElementById("btn2").className = "active";
+        document.getElementById("btn3").className = "btn";
+        
+        document.getElementById("my").style.display = "none";
+        document.getElementById("open").style.display = "none";
+        document.getElementById("all").style.display = "block";
+        
+    }
+    
+    function openOpenShifts() {
+        document.getElementById("btn1").className = "btn";
+        document.getElementById("btn2").className = "btn";
+        document.getElementById("btn3").className = "active";
+        
+        document.getElementById("my").style.display = "none";
+        document.getElementById("all").style.display = "none";
+        document.getElementById("open").style.display = "block";
+    }
+    
+    
+</script>  
