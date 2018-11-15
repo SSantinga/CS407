@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './left-menu.component.html',
   styleUrls: ['./left-menu.component.css']
 })
-export class LeftMenuComponent implements OnInit {
-
+export class LeftMenuComponent{
+  
   constructor() { }
 
   ngOnInit() {
   }
+
+
 
 }
