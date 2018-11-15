@@ -5,6 +5,7 @@ import { CoworkersComponent } from './coworkers/coworkers.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -17,7 +18,8 @@ describe('AppComponent', () => {
         CoworkersComponent,
         NavigationComponent,
         LeftMenuComponent,
-        MatTabsModule
+        MatTabsModule,
+        CalendarComponent
       ],
     }).compileComponents();
   }));
