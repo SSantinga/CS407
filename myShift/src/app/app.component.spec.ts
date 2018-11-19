@@ -19,7 +19,7 @@ describe('AppComponent', () => {
         NavigationComponent,
         LeftMenuComponent,
         MatTabsModule,
-        CalendarComponent
+        CalendarComponent,
       ],
     }).compileComponents();
   }));

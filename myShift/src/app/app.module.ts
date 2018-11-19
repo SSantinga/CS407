@@ -12,6 +12,13 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
+import { FormsModule } from '@angular/forms';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from  '@angular/platform-browser/animations'
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +29,14 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MatTabsModule,
     CommonModule,
+    FormsModule,
+    NgbModalModule,
+    BsDatepickerModule.forRoot(),
+    FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
