@@ -1,3 +1,17 @@
+
+.btn-primary {
+  background-color: gray;
+  border-color: gray;
+}
+
+.btn-primary:hover {
+  background-color: blue;
+}
+
+.btn-outline-secondary:hover {
+  background-color: blue;
+}
+
 /*
 
 .btn-group1 {

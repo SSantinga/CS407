@@ -122,18 +122,22 @@ export class CalendarComponent {
 
   activeDayIsOpen: boolean = true;
 
+  viewDateSelected: Date = new Date();
+
   constructor(private modal: NgbModal) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       this.viewDate = date;
       if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) // if same day selected and open, close it||
+        //events.length === 0
       ) {
         this.activeDayIsOpen = false;
+        this.viewDateSelected = new Date();
       } else {
-        this.activeDayIsOpen = true;
+        this.activeDayIsOpen = true; 
+        this.viewDateSelected = date;// open day
       }
     }
   }
@@ -157,8 +161,8 @@ export class CalendarComponent {
   addEvent(): void {
     this.events.push({
       title: 'New event',
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
+      start: startOfDay(this.viewDateSelected),
+      end: endOfDay(this.viewDateSelected),
       color: colors.red,
       draggable: true,
       resizable: {
