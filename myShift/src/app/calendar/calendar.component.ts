@@ -2,7 +2,8 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
-  TemplateRef
+  TemplateRef,
+  Inject
 } from '@angular/core';
 import {
   startOfDay,
@@ -22,6 +23,16 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView
 } from 'angular-calendar';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material';
+
+//import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
+
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 const colors: any = {
   red: {
@@ -124,14 +135,14 @@ export class CalendarComponent {
 
   viewDateSelected: Date = new Date();
 
-  constructor(private modal: NgbModal) {}
+  constructor(private modal: NgbModal,public dialog: MatDialog) {} //,public dialog: MatDialog
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       this.viewDate = date;
       if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) // if same day selected and open, close it||
-        //events.length === 0
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||// if same day selected and open, close it||
+        events.length === 0
       ) {
         this.activeDayIsOpen = false;
         this.viewDateSelected = new Date();
@@ -158,19 +169,61 @@ export class CalendarComponent {
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  addEvent(): void {
+  eventTitle: string;
+  startDate: Date;
+  endDate: Date;
+
+  addEvent(): void {    
     this.events.push({
-      title: 'New event',
-      start: startOfDay(this.viewDateSelected),
-      end: endOfDay(this.viewDateSelected),
+      title: this.eventTitle,
+      start: startOfDay(this.startDate),
+      end: endOfDay(this.endDate),
       color: colors.red,
       draggable: true,
+      actions: this.actions,
       resizable: {
         beforeStart: true,
         afterEnd: true
       }
     });
     this.refresh.next();
+  }
+
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.startDate,endDate: this.endDate, eventTitle: this.eventTitle}
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.eventTitle = result[0];
+      this.startDate = result[1];
+      this.endDate = result[2];
+      console.log(result);
+      if(result)
+        this.addEvent();
+    });
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: './dialog-box.component.html',
+  styleUrls: ['./calendar.component.css']
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

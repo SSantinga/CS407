@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  <p>What's your favorite eventTitle?</p>
+  <mat-form-field>
+    <input  matInput placeholder="Title" [(ngModel)]="data.eventTitle">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Start Date" mwlFlatpickr [(ngModel)] ="data.startDate">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="End Date" mwlFlatpickr [(ngModel)] ="data.endDate">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button style="padding-right: 10px" class="btn btn-primary" mat-button (click)="onNoClick()">No Thanks</button>
+  <button class="btn btn-primary" mat-button [mat-dialog-close]="[data.eventTitle,data.startDate,data.endDate]" cdkFocusInitial>Ok</button>
+</div>

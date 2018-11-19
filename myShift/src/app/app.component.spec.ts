@@ -6,6 +6,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -20,6 +21,7 @@ describe('AppComponent', () => {
         LeftMenuComponent,
         MatTabsModule,
         CalendarComponent,
+        DialogBoxComponent
       ],
     }).compileComponents();
   }));
