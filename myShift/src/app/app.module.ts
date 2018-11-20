@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule, MatInputModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,8 +16,14 @@ import { FormsModule } from '@angular/forms';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { BrowserAnimationsModule } from  '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from  '@angular/platform-browser/animations';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component'
+import { DialogOverviewExampleDialog } from './calendar/calendar.component';
 
+import { MatDialog,MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+//import { MatDialogModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -25,7 +31,12 @@ import { BrowserAnimationsModule } from  '@angular/platform-browser/animations'
     CoworkersComponent,
     NavigationComponent,
     LeftMenuComponent,
-    CalendarComponent
+    DialogOverviewExampleDialog,
+    CalendarComponent,
+    DialogBoxComponent
+  ],
+  entryComponents: [
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -35,6 +46,9 @@ import { BrowserAnimationsModule } from  '@angular/platform-browser/animations'
     CommonModule,
     FormsModule,
     NgbModalModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
     BsDatepickerModule.forRoot(),
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
@@ -42,7 +56,9 @@ import { BrowserAnimationsModule } from  '@angular/platform-browser/animations'
       useFactory: adapterFactory
     })
   ],
-  providers: [],
+  providers: [
+    MatDialog
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

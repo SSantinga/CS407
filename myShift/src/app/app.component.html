@@ -8,32 +8,12 @@
 <link href="https://unpkg.com/angular-calendar@0.26.4/css/angular-calendar.css" rel="stylesheet">
 <link href="https://unpkg.com/flatpickr@4.5.2/dist/flatpickr.css" rel="stylesheet">
 
-
-   <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Sheridan Santinga, Module 7 Review</title>
-    
-    <link rel = "stylesheet" href="homepage_stylesheet.css">
-    <link rel = "stylesheet" href="navagation_stylesheet.css"> -->
 </head>
 <body>
   <div>
-   <!-- <nav mat-tab-nav-bar>
-        <a mat-tab-link
-           *ngFor="let link of navLinks"
-           [routerLink]="link.path"
-           routerLinkActive #rla="routerLinkActive"
-           [active]="rla.isActive">
-          {{link.label}}
-          <div style="color: red; margin-left: 10px;">
-              <span *ngIf="rla.isActive"> Is active!</span>
-              <span *ngIf="!rla.isActive"> Is not active...</span>
-          </div>
-        </a>
-      </nav> -->
-
       <app-navigation></app-navigation>
       <app-left-menu></app-left-menu>
-            
+    
     <div class = "rightbar">
         <br>
         <app-calendar ></app-calendar>
@@ -43,27 +23,6 @@
    <!--<footer>Copyright © MyShifts The University of Alabama</footer>-->
 
 </body></html>
-
-
-<!--The content below is only a placeholder and can be replaced.
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="400" alt="Angular Logo" src="https://campustocareer.files.wordpress.com/2012/02/shift.jpg">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>-->
 
 <router-outlet></router-outlet>
 
