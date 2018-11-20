@@ -22,9 +22,10 @@ body {
     margin-top: 50px;
     margin-right: 15px;
     margin-left: 2px;
-    height: 1000px;
+    height: auto;
     border-radius:10px;
-    box-shadow: 3px 3px 1px #555555;
+    box-shadow: 3px 3px 1px #999999;
+    margin-bottom: 20px;
 }
 
 h1 {
