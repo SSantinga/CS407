@@ -72,14 +72,36 @@ export class CalendarComponent {
     event: CalendarEvent;
   };
 
+  eventTitle: string;
+  startDate: string;
+  endDate: string;
+
+  eventChange: boolean = false;
+  changedEvent: CalendarEvent;
+
   actions: CalendarEventAction[] = [
     {
+      /* Editing an event by clicking on the edit button */
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.changedEvent = event;
+        console.log(event.start.getFullYear().toString() + "-" + (event.start.getMonth()+1).toString() + "-" + event.start.getDate().toString() + "T0" + event.start.getHours().toString() + ":00");// + event.start.getMinutes().toString());
+        this.startDate = event.start.getFullYear().toString() + "-" + (event.start.getMonth()+1).toString() + "-" + event.start.getDate().toString() + "T0" + event.start.getHours().toString() + ":00";// + event.start.getUTCMinutes().toString();
+        this.endDate = event.end.getFullYear().toString() + "-" + (event.end.getMonth()+1).toString() + "-" + event.end.getDate().toString() + "T" + event.end.getHours().toString() + ":00";// + event.end.getUTCMinutes().toString();
+        console.log(this.startDate);
+        console.log(this.endDate);
+        this.eventTitle = event.title;
+        this.eventChange = true;
+        this.openDialog();
+        this.startDate = "";
+        this.endDate = "";
+        this.eventTitle = "";
+
        // this.handleEvent('Edited', event);
       }
     },
     {
+      /* Deleting an event by clicking on the delete button in the dropdown */
       label: '<i class="fa fa-fw fa-times"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
         this.events = this.events.filter(iEvent => iEvent !== event);
@@ -160,7 +182,7 @@ export class CalendarComponent {
   }: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;
-    this.handleEvent('Dropped or resized', event);
+    //this.handleEvent('Dropped or resized', event);
     this.refresh.next();
   }
 
@@ -168,10 +190,6 @@ export class CalendarComponent {
     this.modalData = { event, action };
     this.modal.open(this.modalContent, { size: 'lg' });
   }
-
-  eventTitle: string;
-  startDate: string;// = new Date();
-  endDate: string;// = new Date();
 
   testDate:Date = new Date();
 
@@ -193,21 +211,30 @@ export class CalendarComponent {
 
       console.log(this.newStartDate);
       console.log(this.newEndDate);
-    
-    this.events.push({
-      title: this.eventTitle,
-      start: this.newStartDate,
-      end: this.newEndDate,
-      color: colors.red,
-      draggable: true,
-      allDay: this.isMultiDateEvent,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
+
+      if(!this.eventChange) {
+        this.events.push({
+          title: this.eventTitle,
+          start: this.newStartDate,
+          end: this.newEndDate,
+          color: colors.red,
+          draggable: true,
+          allDay: this.isMultiDateEvent,
+          actions: this.actions,
+          resizable: {
+            beforeStart: true,
+            afterEnd: true
+          }
+        });
+        this.refresh.next();
       }
-    });
-    this.refresh.next();
+      else {
+        this.changedEvent.title = this.eventTitle,
+        this.changedEvent.start = this.newStartDate,
+        this.changedEvent.end = this.newEndDate
+        this.refresh.next();
+        this.eventChange = false;
+      }
   }
 
 
@@ -215,7 +242,7 @@ export class CalendarComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '250px',
-      data: {name: this.startDate,endDate: this.endDate, eventTitle: this.eventTitle}
+      data: {startDate: this.startDate,endDate: this.endDate, eventTitle: this.eventTitle}
     });
 
 
