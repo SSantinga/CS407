@@ -112,9 +112,7 @@ export class CalendarComponent {
         this.eventTitle = event.title;
         this.eventChange = true;
         this.openDialog();
-        this.startDate = "";
-        this.endDate = "";
-        this.eventTitle = "";
+        
 
        // this.handleEvent('Edited', event);
       }
@@ -254,6 +252,9 @@ export class CalendarComponent {
         this.changedEvent.allDay = this.isMultiDateEvent,
         this.refresh.next();
         this.eventChange = false;
+        this.startDate = "";
+        this.endDate = "";
+        this.eventTitle = "";
       }
   }
 
