@@ -5,10 +5,16 @@
     <input  matInput placeholder="Title" [(ngModel)]="data.eventTitle">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Start Date" mwlFlatpickr [(ngModel)] ="data.startDate">
+    <input matInput placeholder="Start Date" mwlFlatpickr
+    [enableTime]="true"
+    dateFormat="Y-m-dTH:i"
+    [(ngModel)] ="data.startDate">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="End Date" mwlFlatpickr [(ngModel)] ="data.endDate">
+    <input matInput placeholder="End Date" mwlFlatpickr
+    [enableTime]="true"
+    dateFormat="Y-m-dTH:i"
+    [(ngModel)] ="data.endDate" >
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

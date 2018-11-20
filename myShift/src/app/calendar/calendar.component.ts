@@ -76,14 +76,14 @@ export class CalendarComponent {
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
+       // this.handleEvent('Edited', event);
       }
     },
     {
       label: '<i class="fa fa-fw fa-times"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
         this.events = this.events.filter(iEvent => iEvent !== event);
-        this.handleEvent('Deleted', event);
+        //this.handleEvent('Deleted', event);
       }
     }
   ];
@@ -170,16 +170,37 @@ export class CalendarComponent {
   }
 
   eventTitle: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;// = new Date();
+  endDate: string;// = new Date();
+
+  testDate:Date = new Date();
+
+  newStartDate:Date;
+
+  newEndDate:Date;
+
+  isMultiDateEvent: boolean;
 
   addEvent(): void {    
+
+    if(this.startDate.slice(0,10) === this.endDate.slice(0,10))
+      this.isMultiDateEvent = false;
+    else
+      this.isMultiDateEvent = true;
+
+      this.newStartDate = new Date(Date.parse(this.startDate));
+      this.newEndDate = new Date(Date.parse(this.endDate));
+
+      console.log(this.newStartDate);
+      console.log(this.newEndDate);
+    
     this.events.push({
       title: this.eventTitle,
-      start: startOfDay(this.startDate),
-      end: endOfDay(this.endDate),
+      start: this.newStartDate,
+      end: this.newEndDate,
       color: colors.red,
       draggable: true,
+      allDay: this.isMultiDateEvent,
       actions: this.actions,
       resizable: {
         beforeStart: true,
@@ -204,6 +225,7 @@ export class CalendarComponent {
       this.startDate = result[1];
       this.endDate = result[2];
       console.log(result);
+      
       if(result)
         this.addEvent();
     });
