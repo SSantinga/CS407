@@ -85,8 +85,8 @@ export class CalendarComponent {
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
         this.changedEvent = event;
-        console.log(event.start.getFullYear().toString() + "-" + (event.start.getMonth()+1).toString() + "-" + event.start.getDate().toString() + "T0" + event.start.getHours().toString() + ":00");// + event.start.getMinutes().toString());
-        this.startDate = event.start.getFullYear().toString() + "-" + (event.start.getMonth()+1).toString() + "-" + event.start.getDate().toString() + "T0" + event.start.getHours().toString() + ":00";// + event.start.getUTCMinutes().toString();
+        console.log(event.start.getFullYear().toString() + "-" + (event.start.getMonth()+1).toString() + "-" + event.start.getDate().toString() + "T" + event.start.getHours().toString() + ":00");// + event.start.getMinutes().toString());
+        this.startDate = event.start.getFullYear().toString() + "-" + (event.start.getMonth()+1).toString() + "-" + event.start.getDate().toString() + "T" + event.start.getHours().toString() + ":00";// + event.start.getUTCMinutes().toString();
         this.endDate = event.end.getFullYear().toString() + "-" + (event.end.getMonth()+1).toString() + "-" + event.end.getDate().toString() + "T" + event.end.getHours().toString() + ":00";// + event.end.getUTCMinutes().toString();
         console.log(this.startDate);
         console.log(this.endDate);
@@ -215,8 +215,8 @@ export class CalendarComponent {
       if(!this.eventChange) {
         this.events.push({
           title: this.eventTitle,
-          start: this.newStartDate,
-          end: this.newEndDate,
+          start: addHours(this.newStartDate, 6),
+          end: addHours(this.newEndDate,6),
           color: colors.red,
           draggable: true,
           allDay: this.isMultiDateEvent,
@@ -230,8 +230,8 @@ export class CalendarComponent {
       }
       else {
         this.changedEvent.title = this.eventTitle,
-        this.changedEvent.start = this.newStartDate,
-        this.changedEvent.end = this.newEndDate
+        this.changedEvent.start = addHours(this.newStartDate, 6),
+        this.changedEvent.end = addHours(this.newEndDate,6),
         this.refresh.next();
         this.eventChange = false;
       }
