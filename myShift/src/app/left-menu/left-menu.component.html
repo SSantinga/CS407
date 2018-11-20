@@ -20,7 +20,7 @@
         <h4>My Shifts</h4>
             <tr *ngFor="let event of events; let index = index">
                 <td>
-                    <p id="Shifts">{{event.start}} - {{event.end}}</p>
+                    <p id="Shifts">{{event.start | date:'short'}} - {{event.end | date:'short'}}</p>
                 </td>
             </tr>
         </div>
