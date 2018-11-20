@@ -76,6 +76,10 @@ export class CalendarComponent {
   startDate: string;
   endDate: string;
 
+  day: number;
+  dayString: string;
+  endDayString: string;
+
   eventChange: boolean = false;
   changedEvent: CalendarEvent;
 
@@ -85,9 +89,24 @@ export class CalendarComponent {
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
         this.changedEvent = event;
-        console.log(event.start.getFullYear().toString() + "-" + (event.start.getMonth()+1).toString() + "-" + event.start.getDate().toString() + "T" + event.start.getHours().toString() + ":00");// + event.start.getMinutes().toString());
-        this.startDate = event.start.getFullYear().toString() + "-" + (event.start.getMonth()+1).toString() + "-" + event.start.getDate().toString() + "T" + event.start.getHours().toString() + ":00";// + event.start.getUTCMinutes().toString();
-        this.endDate = event.end.getFullYear().toString() + "-" + (event.end.getMonth()+1).toString() + "-" + event.end.getDate().toString() + "T" + event.end.getHours().toString() + ":00";// + event.end.getUTCMinutes().toString();
+
+        this.day = event.start.getDate();
+        if(this.day < 10) {
+          this.dayString = "0" + this.day.toString();
+        }
+        else {
+          this.dayString = this.day.toString();
+        }
+        this.day = event.end.getDate();
+        if(this.day < 10) {
+          this.endDayString = "0" + this.day.toString();
+        }
+        else {
+          this.endDayString = this.day.toString();
+        }        
+
+        this.startDate = event.start.getFullYear().toString() + "-" + (event.start.getMonth()+1).toString() + "-" + this.dayString + "T" + event.start.getHours().toString() + ":00";// + event.start.getUTCMinutes().toString();
+        this.endDate = event.end.getFullYear().toString() + "-" + (event.end.getMonth()+1).toString() + "-" + this.endDayString + "T" + event.end.getHours().toString() + ":00";// + event.end.getUTCMinutes().toString();
         console.log(this.startDate);
         console.log(this.endDate);
         this.eventTitle = event.title;
@@ -232,6 +251,7 @@ export class CalendarComponent {
         this.changedEvent.title = this.eventTitle,
         this.changedEvent.start = addHours(this.newStartDate, 6),
         this.changedEvent.end = addHours(this.newEndDate,6),
+        this.changedEvent.allDay = this.isMultiDateEvent,
         this.refresh.next();
         this.eventChange = false;
       }
