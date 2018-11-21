@@ -1,8 +1,47 @@
-<div class="navagation">
-    <a href="alerts.html">Alerts</a>
-    <a class = "act" href ="homepage.html">Home</a>
-    <a href = "requests.html">View Requests</a>
-    <a class = "right" href="settings.html">Settings</a>
-  <!--  <app-coworkers></app-coworkers> -->
-    <a class="right" href="coworkers.html"><img id="coworkers" src="Coworkers.png" alt="Coworkers">Coworkers</a>
+<nav class="navbar navbar-dark bg-dark mb-5">
+  <a class="navbar-brand" href="/">MyShift</a>
+  <div class="navbar-expand mr-auto">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home</a>
+      <a class="nav-item nav-link" href="#">Alerts</a>
+      <a class="nav-item nav-link" href="#">Requests</a>
+      <a class="nav-item nav-link" href="#">Coworkers</a>
+    </div>
+  </div>
+  <div class="navbar-expand ml-auto navbar-nav">
+    <div class="navbar-nav">
+      <a class= "nav-item nav-link"
+      href="#">
+        <i class="fa fa-bell-o"></i>
+      </a>
+      <a class= "nav-item nav-link"
+      href="#">
+        <i class="fa fa-gears"></i>
+      </a>
+      <a class="nav-item nav-link" href="https://github.com/SSantinga/CS407" target="_blank">
+        <i class="fa fa-github"></i>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<!--<div class="navagation" >
+        <button (click)="homepage = !homepage" type="button" id = "home" [className]="homepage ? 'active' : 'btn'">Home</button>
+       
+        <button (click)="alerts = !alerts" type="button" id = "alerts" [className]="alerts ? 'active' : 'btn'">Alerts</button>
+    
+        <button (click)="requests = !requests" type="button" id = "requests" [className]="requests ? 'active' : 'btn'">Requests</button>
+    
+        <button (click)="coworkers = !coworkers" type="button" id = "coworkers" class="right" [className]="coworkers ? 'active' : 'btn'">Coworkers</button>
+    
+        <button (click)="settings = !settings" type="button" id = "settings" class= "right" [className]="settings ? 'active' : 'btn'">Settings</button>
 </div>
+    <!--<a class = "act" href ="homepage.html">Home</a>
+    <a href="alerts.html">Alerts</a>
+    <a href = "requests.html">View Requests</a>
+    <a class = "right" href="settings.html">Settings</a>-->
+  <!--  <app-coworkers></app-coworkers> 
+    <a class="right" href="/src/app/coworkers/coworkers.component.html">Coworkers</a>-->
+<!--</div>--> 
+
