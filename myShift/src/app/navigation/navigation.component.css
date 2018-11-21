@@ -1,11 +1,3 @@
-
-#coworkers {
-    height: 20px;
-    width: 20px;
-    padding-right: 5px;
-    vertical-align: bottom;
-}
-
 .navagation {
     background-color: #444444;
     overflow: hidden;
@@ -14,8 +6,9 @@
     background-size: cover;
 }
 
-.navagation a {
+.navagation button {
     float: left;
+    background-color: #444444;
     color: #DDDDDD;
     text-align: center;
     padding: 14px 16px;
@@ -25,16 +18,19 @@
     font-family: sans-serif;
 }
 
-.act  {
+.navagation button.active  {
+    background-color:#333333;
+    color: #FFFFFF;
+    border: none;
+}
+
+.navagation button:hover {
     background-color:#333333;
     color: #FFFFFF;
 }
 
-.navagation a:hover {
-    background-color:#333333;
-    color: #FFFFFF;
-}
-
-.navagation a.right {
+#settings, #coworkers {
     float: right;
 }
+
+
