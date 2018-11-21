@@ -34,6 +34,9 @@ import { EventServiceService } from '../event-service.service';
 export interface DialogData {
   animal: string;
   name: string;
+  eventTitle: string;
+  startDate: string;
+  endDate: string;
 }
 
 const colors: any = {

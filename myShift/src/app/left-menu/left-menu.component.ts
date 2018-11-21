@@ -55,6 +55,10 @@ export class LeftMenuComponent{
 
   ngOnInit() {}
   
+  my:any;
+  all:any;
+  open:any;
+
   messages: string[];
   
   events: CalendarEvent[] = [];
