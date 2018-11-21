@@ -24,7 +24,8 @@ import {
   CalendarView
 } from 'angular-calendar';
 //import { CalendarComponent } from 'C:/Users/Sawri/Desktop/Software Interface Design/Project/CS407/myShift/src/app/calendar/calendar.component';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { EventServiceService } from '../event-service.service';
 
 const colors: any = {
   red: {
@@ -50,10 +51,21 @@ const colors: any = {
 })
 export class LeftMenuComponent{
   
-  constructor() { }
+  constructor(public EventService: EventServiceService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+  
+  messages: string[];
+  
+  events: CalendarEvent[] = [];
+  
+getEvent():void {
+    this.events = this.EventService.get();
+    console.log(this.events[0].start.toString());
+    //this.messages = this.events;
+}
+  
+  /*
 @ViewChild('modalContent')
   modalContent: TemplateRef<any>;
 
@@ -92,6 +104,6 @@ export class LeftMenuComponent{
       title: 'A draggable and resizable event',
     }
   ];
-
+*/
 
 }

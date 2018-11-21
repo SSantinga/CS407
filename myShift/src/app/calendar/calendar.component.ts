@@ -3,7 +3,8 @@ import {
   ChangeDetectionStrategy,
   ViewChild,
   TemplateRef,
-  Inject
+  Inject,
+  OnInit
 } from '@angular/core';
 import {
   startOfDay,
@@ -25,6 +26,7 @@ import {
 } from 'angular-calendar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { EventServiceService } from '../event-service.service';
 
 //import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 
@@ -57,6 +59,8 @@ const colors: any = {
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent {
+    
+  ngOnInit() {this.sendEvent();} //this.getEvent();}     
 
   @ViewChild('modalContent')
   modalContent: TemplateRef<any>;
@@ -144,12 +148,6 @@ export class CalendarComponent {
       draggable: true
     },
     {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
       start: subDays(endOfMonth(new Date()), 3),
       end: addDays(endOfMonth(new Date()), 3),
       title: 'A long event that spans 2 months',
@@ -174,7 +172,17 @@ export class CalendarComponent {
 
   viewDateSelected: Date = new Date();
 
-  constructor(private modal: NgbModal,public dialog: MatDialog) {} //,public dialog: MatDialog
+  constructor(private modal: NgbModal,public dialog: MatDialog, public EventService: EventServiceService) {} //,public dialog: MatDialog
+  
+ // messages: any;
+  
+//  sendEvent():void {
+//    this.EventService.add(this.events);
+//}
+
+//  getEvent():void {
+//    this.events = this.EventService.get();
+//}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -256,9 +264,13 @@ export class CalendarComponent {
         this.endDate = "";
         this.eventTitle = "";
       }
+      this.sendEvent();
+    
   }
 
-
+sendEvent():void {
+        this.EventService.add(this.events);
+    }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
