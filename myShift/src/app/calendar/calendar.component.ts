@@ -82,6 +82,7 @@ export class CalendarComponent {
   eventTitle: string;
   startDate: string;
   endDate: string;
+  personID: string;
 
   day: number;
   dayString: string;
@@ -138,12 +139,13 @@ export class CalendarComponent {
 
   events: CalendarEvent[] = [
     {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
+      start: addHours(new Date(), 2),
+      end: addHours(new Date(), 4),
+      title: 'Your Shift',
       color: colors.red,
       actions: this.actions,
-      allDay: true,
+      allDay: false,
+      id: "person1",
       resizable: {
         beforeStart: true,
         afterEnd: true
@@ -151,17 +153,19 @@ export class CalendarComponent {
       draggable: true
     },
     {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
+      start: addHours(addDays(new Date(),1), 2),
+      end: addHours(addDays(new Date(),1), 4),
+      title: 'Coworker\'s shift',
+      id: "person2",
       color: colors.blue,
-      allDay: true
+      allDay: false
     },
     {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
+      start: addHours(addDays(new Date(),2), 2),
+      end: addHours(addDays(new Date(),2), 4),
+      title: 'Requested shift',
       color: colors.yellow,
+      id: "person1",
       actions: this.actions,
       resizable: {
         beforeStart: true,
@@ -175,13 +179,7 @@ export class CalendarComponent {
 
   viewDateSelected: Date = new Date();
 
-  constructor(private modal: NgbModal,public dialog: MatDialog, public EventService: EventServiceService) {} //,public dialog: MatDialog
-  
- // messages: any;
-  
-//  sendEvent():void {
-//    this.EventService.add(this.events);
-//}
+  constructor(private modal: NgbModal,public dialog: MatDialog, public EventService: EventServiceService) {}
 
 //  getEvent():void {
 //    this.events = this.EventService.get();
@@ -246,6 +244,7 @@ export class CalendarComponent {
           start: addHours(this.newStartDate, 6),
           end: addHours(this.newEndDate,6),
           color: colors.red,
+          id: this.personID,
           draggable: true,
           allDay: this.isMultiDateEvent,
           actions: this.actions,
