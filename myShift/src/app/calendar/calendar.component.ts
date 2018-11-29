@@ -163,7 +163,7 @@ export class CalendarComponent {
     {
       start: addHours(addDays(new Date(),2), 2),
       end: addHours(addDays(new Date(),2), 4),
-      title: 'Requested shift',
+      title: 'Open shift',
       color: colors.yellow,
       id: "person1",
       actions: this.actions,
@@ -291,6 +291,20 @@ sendEvent():void {
       if(result)
         this.addEvent();
     });
+  }
+  
+  requestDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {startDate: this.startDate,endDate: this.endDate, eventTitle: this.eventTitle}
+    });
+  }
+  
+  availabilityDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {startDate: this.startDate,endDate: this.endDate, eventTitle: this.eventTitle}
+    });    
   }
 
 }

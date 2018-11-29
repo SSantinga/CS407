@@ -19,6 +19,28 @@
     <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
   </div>
 </ng-template>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="btn-group">
+<h3>
+  <button
+    class="btn btn-primary pull-right"
+    (click)="requestDialog()">
+    Requests
+  </button>
+  <div class="clearfix"></div>
+</h3>
+&nbsp;
+<h3>
+  <button
+    class="btn btn-primary pull-right"
+    (click)="availabilityDialog()">
+    Availabilty
+  </button>
+  <div class="clearfix"></div>
+</h3>
+</div>
 <div class="row text-center">
   <div class="col-md-4">
     <div class="btn-group">
@@ -80,7 +102,7 @@
     [events]="events"
     [refresh]="refresh"
     [activeDayIsOpen]="activeDayIsOpen"
-    (dayClicked)="dayClicked($event.day)"
+    (dayClicked)="dayClicked($event.day)"                
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)">
   </mwl-calendar-month-view>
