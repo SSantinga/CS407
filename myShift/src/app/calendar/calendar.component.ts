@@ -37,6 +37,7 @@ export interface DialogData {
   eventTitle: string;
   startDate: string;
   endDate: string;
+  requestType: string;
 }
 
 const colors: any = {
