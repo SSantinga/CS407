@@ -51,6 +51,10 @@ const colors: any = {
   yellow: {
     primary: '#e3bc08',
     secondary: '#FDF1BA'
+  },
+  gray: {
+    primary: 'gray',
+    secondary: 'gray'
   }
 };
 
@@ -83,6 +87,7 @@ export class CalendarComponent {
   startDate: string;
   endDate: string;
   personID: string;
+  requestType: string;
 
   day: number;
   dayString: string;
@@ -243,7 +248,7 @@ export class CalendarComponent {
           title: this.eventTitle,
           start: addHours(this.newStartDate, 6),
           end: addHours(this.newEndDate,6),
-          color: colors.red,
+          color: colors.gray,
           id: this.personID,
           draggable: true,
           allDay: this.isMultiDateEvent,
@@ -277,7 +282,7 @@ sendEvent():void {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '250px',
-      data: {startDate: this.startDate,endDate: this.endDate, eventTitle: this.eventTitle}
+      data: {startDate: this.startDate,endDate: this.endDate, eventTitle: this.eventTitle, requestType: this.requestType}
     });
 
 
@@ -286,9 +291,10 @@ sendEvent():void {
       this.eventTitle = result[0];
       this.startDate = result[1];
       this.endDate = result[2];
+      this.requestType = result[3];
       console.log(result);
       
-      if(result)
+      if(result && result[3] == "work")
         this.addEvent();
     });
   }

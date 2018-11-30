@@ -1,7 +1,7 @@
 <div mat-dialog-content>
    <h4 style="text-align: center">Request Form</h4>
-    <input type="radio" value="timeOff"> Request Time Off &nbsp;
-    <input type="radio" value="work"> Request to Work <br> 
+    <input type="radio" value="timeOff" name="requestType" [(ngModel)] ="data.requestType"> Request Time Off <br>
+    <input type="radio" value="work" name="requestType" [(ngModel)] ="data.requestType"> Request to Work <br> 
   <mat-form-field>
     <input matInput placeholder="Start Date" mwlFlatpickr
     [enableTime]="true"
@@ -23,5 +23,5 @@
   <button style="padding-right: 10px" class="btn btn-primary" mat-button (click)="onNoClick()">Cancel</button> 
 </div>
 <div mat-dialog-actions style="float: right">
-  <button class="btn btn-primary" mat-button [mat-dialog-close]="[data.eventTitle,data.startDate,data.endDate]" cdkFocusInitial>Submit</button>
+  <button class="btn btn-primary" mat-button [mat-dialog-close]="[data.eventTitle,data.startDate,data.endDate,data.requestType]" cdkFocusInitial>Submit</button>
 </div>
