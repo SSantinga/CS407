@@ -63,7 +63,7 @@ const colors: any = {
 })
 export class CalendarComponent {
     
-  ngOnInit() {this.sendEvent();} //this.getEvent();}     
+  ngOnInit() {this.sendEvent();} //this.getEvent();     
 
   @ViewChild('modalContent')
   modalContent: TemplateRef<any>;
@@ -179,7 +179,7 @@ export class CalendarComponent {
 
   viewDateSelected: Date = new Date();
 
-  constructor(private modal: NgbModal,public dialog: MatDialog, public EventService: EventServiceService) {}
+  constructor(private modal: NgbModal,public dialog: MatDialog, public dialogs: MatDialog, public EventService: EventServiceService) {}
 
 //  getEvent():void {
 //    this.events = this.EventService.get();
@@ -295,16 +295,17 @@ sendEvent():void {
   
   requestDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
+      width: '275px',
       data: {startDate: this.startDate,endDate: this.endDate, eventTitle: this.eventTitle}
     });
   }
   
   availabilityDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {startDate: this.startDate,endDate: this.endDate, eventTitle: this.eventTitle}
-    });    
+    this.dialogs.open(Availability, {
+      
+      data: {startDate: this.startDate}
+    });
+
   }
 
 }
@@ -324,4 +325,19 @@ export class DialogOverviewExampleDialog {
     this.dialogRef.close();
   }
 
+}
+
+@Component({
+  templateUrl: './availability.html',
+  styleUrls: ['./calendar.component.css']
+})
+export class Availability {
+
+  constructor(
+    public dialogRef: MatDialogRef<Availability>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+    onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

@@ -1,0 +1,61 @@
+<div mat-dialog-content>
+   <h4 style="text-align: center">Availability</h4>
+  <mat-form-field>
+    <input matInput placeholder="Start Date" mwlFlatpickr
+    [enableTime]="false"
+    dateFormat="Y-m-d"
+    [(ngModel)] ="data.startDate">
+  </mat-form-field> <br>
+  <mat-form-field>
+    <input matInput placeholder="End Date" mwlFlatpickr
+    [enableTime]="false"
+    dateFormat="Y-m-d"
+    [(ngModel)] ="data.endDate" >
+  </mat-form-field>
+</div>
+<br>
+<h5>Select the all times you are available to work each day.</h5>
+<table width="100%" border="1" bordercolor="#cccccc" cellpadding="5" cellspacing="5">
+ <tr>
+     <th>Monday</th>
+     <th>Tuesday</th>
+     <th>Wednesday</th>
+     <th>Thursday</th>
+     <th>Friday</th>
+ </tr>
+ <tr>
+     <td><input type="checkbox"> 8am - 12pm</td>
+     <td><input type="checkbox"> 8am - 12pm</td>
+     <td><input type="checkbox"> 8am - 12pm</td>
+     <td><input type="checkbox"> 8am - 12pm</td>
+     <td><input type="checkbox"> 8am - 12pm</td>
+ </tr>
+ <tr>
+     <td><input type="checkbox"> 12pm - 4pm</td>
+     <td><input type="checkbox"> 12pm - 4pm</td>
+     <td><input type="checkbox"> 12pm - 4pm</td>
+     <td><input type="checkbox"> 12pm - 4pm</td>
+     <td><input type="checkbox"> 12pm - 4pm</td>
+ </tr>
+ <tr>
+     <td><input type="checkbox"> 4pm - 8pm</td>
+     <td><input type="checkbox"> 4pm - 8pm</td>
+     <td><input type="checkbox"> 4pm - 8pm</td>
+     <td><input type="checkbox"> 4pm - 8pm</td>
+     <td><input type="checkbox"> 4pm - 8pm</td>
+ </tr>
+ <tr>
+    <td><input type="checkbox"> 8pm - 12am</td>
+    <td><input type="checkbox"> 8pm - 12am</td>
+    <td><input type="checkbox"> 8pm - 12am</td>
+    <td><input type="checkbox"> 8pm - 12am</td>
+    <td><input type="checkbox"> 8pm - 12am</td>
+ </tr>
+</table>
+<br>
+
+
+<div mat-dialog-actions>
+  <button style="padding-right: 10px" class="btn btn-primary" mat-button (click)="onNoClick()">Cancel</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-primary" mat-button [mat-dialog-close]="[data.eventTitle,data.startDate,data.endDate]" cdkFocusInitial>Submit</button>
+</div>

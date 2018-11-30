@@ -22,6 +22,8 @@ import { DialogOverviewExampleDialog } from './calendar/calendar.component';
 
 import { MatDialog,MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AvailabilityComponent } from './availability/availability.component';
+import { Availability } from './calendar/calendar.component';
 
 //import { MatDialogModule } from '@angular/material';
 
@@ -33,10 +35,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     LeftMenuComponent,
     DialogOverviewExampleDialog,
     CalendarComponent,
-    DialogBoxComponent
+    DialogBoxComponent,
+    AvailabilityComponent,
+    Availability
   ],
   entryComponents: [
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    AvailabilityComponent,
+    Availability
   ],
   imports: [
     BrowserModule,
