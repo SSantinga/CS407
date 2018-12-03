@@ -217,10 +217,15 @@ export class CalendarComponent {
     //this.handleEvent('Dropped or resized', event);
     this.refresh.next();
   }
-
+  addStart: string;
+  addEnd: string;
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+
+    this.addStart = event.start.getFullYear().toString() + "-" + (event.start.getMonth()+1).toString() + "-" + event.start.getDay() + " at " + event.start.getHours().toString() + ":00";
+    this.addEnd = event.end.getFullYear().toString() + "-" + (event.end.getMonth()+1).toString() + "-" + event.end.getDay() + " at " + event.end.getHours().toString() + ":00";// + event.end.getUTCMinutes().toString();
+
+    this.modal.open(event.title + "  | FROM: " + this.addStart + "\n\n| TO:   " + this.addEnd);
   }
 
   testDate:Date = new Date();
@@ -295,7 +300,7 @@ sendEvent():void {
       this.requestType = result[3];
       console.log(result);
       
-      if(result && result[3] == "work")
+      if(result)
         this.addEvent();
     });
   }

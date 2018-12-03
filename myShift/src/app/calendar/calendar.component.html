@@ -19,10 +19,11 @@
     <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
   </div>
 </ng-template>
-<div class="btn-group" style="padding-left: 125px">
+<div class="btn-group" style="padding-left: 53px">
 <h3>
   <button
     class="btn btn-primary pull-right"
+    style="width: 90px"
     (click)="openDialog()">
     Requests
   </button>
@@ -32,6 +33,7 @@
 <h3>
   <button
     class="btn btn-primary pull-right"
+    style="width: 100px; text-align: center"
     (click)="availabilityDialog()">
     Availabilty
   </button>
@@ -52,6 +54,7 @@
       </div>
       <div
         class="btn btn-outline-secondary"
+        style="width: 125px"
         mwlCalendarToday
         [(viewDate)]="viewDate">
         Today
