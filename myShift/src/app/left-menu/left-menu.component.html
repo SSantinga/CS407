@@ -19,16 +19,16 @@
                     <p id="Shifts">{{event.start | date:'short'}} - {{event.end | date:'short'}}</p>
                 </td>
             </tr>
-            <p id="Shifts">12/12/18, 12:00 AM - 12/12/18, 3:00 PM</p>
-            <p id="Shifts">12/14/18, 3:00 PM - 12/14/18, 7:00 PM</p>
+          <!--  <p id="Shifts">12/12/18, 12:00 AM - 12/12/18, 3:00 PM</p>
+            <p id="Shifts">12/14/18, 3:00 PM - 12/14/18, 7:00 PM</p> -->
         </div>
         <div [style.display]="my ? 'block' : 'none'" class = "shiftBar" id="my">
         <h4>My Shifts</h4>
-            <tr *ngFor="let event of events; let index = index">
+            <tr *ngFor="let event of events; let index = index"> 
                 <td>
                     <p id="Shifts">{{event.start | date:'short'}} - {{event.end | date:'short'}}</p>
                 </td>
-            </tr>
+            </tr> 
         </div>
     </div>
 </div>

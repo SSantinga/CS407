@@ -156,7 +156,7 @@ export class CalendarComponent {
         beforeStart: true,
         afterEnd: true
       },
-      draggable: true
+      draggable: false
     },
     {
       start: addHours(addDays(new Date(),1), 2),
@@ -177,7 +177,7 @@ export class CalendarComponent {
         beforeStart: true,
         afterEnd: true
       },
-      draggable: true
+      draggable: false
     }
   ];
 
